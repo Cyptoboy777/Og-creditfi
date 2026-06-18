@@ -1,0 +1,9 @@
+{
+  "0g-testnet": {
+    "network": "0g-testnet",
+    "contractAddress": "0xF25fb1076517BaE6876f8F35B057aA9893A9B84A",
+    "deployedAt": "2026-06-18T07:13:31.351Z",
+    "deployer": "0x1a1a83663CeACCd99FF0D30529b70D6725b46054",
+    "explorerUrl": "https://chainscan-galileo.0g.ai/address/0xF25fb1076517BaE6876f8F35B057aA9893A9B84A"
+  }
+}

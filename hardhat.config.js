@@ -13,7 +13,7 @@ module.exports = {
     // 0G Testnet (Galileo)
     "0g-testnet": {
       url: "https://evmrpc-testnet.0g.ai",
-      chainId: 16601,
+      chainId: 16602,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
     // 0G Mainnet
@@ -31,7 +31,7 @@ module.exports = {
     customChains: [
       {
         network: "0g-testnet",
-        chainId: 16601,
+        chainId: 16602,
         urls: {
           apiURL: "https://chainscan-galileo.0g.ai/api",
           browserURL: "https://chainscan-galileo.0g.ai",
