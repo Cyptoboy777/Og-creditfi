@@ -1,0 +1,49 @@
+graph TB
+    subgraph USER["👤 User / AI Agent"]
+        W[Web dApp<br/>Next.js + wagmi]
+    end
+
+    subgraph OG_CHAIN["⛓️ 0G Chain — EVM L1"]
+        CF[CreditFi.sol<br/>Smart Contract]
+        CF --> |"deposit / borrow / repay"| POOL[(Lending Pool<br/>OG Tokens)]
+        CF --> |"emit events"| EV[On-Chain Events]
+    end
+
+    subgraph OG_COMPUTE["🤖 0G Compute Network"]
+        AI[Credit Scoring AI<br/>GBM Model<br/>Python / sklearn]
+        ORC[Score Oracle<br/>Owner EOA]
+    end
+
+    subgraph OG_STORAGE["🗄️ 0G Storage"]
+        HIST[Agent Credit History<br/>JSON blobs]
+        ARCH[Score Audit Log<br/>Immutable records]
+    end
+
+    subgraph OG_PAY["💳 0G Pay"]
+        PAY[Payment Rails<br/>Microtransactions]
+    end
+
+    W -->|"connect MetaMask<br/>0G Testnet/Mainnet"| CF
+    W -->|"simulate score"| AI
+    
+    EV -->|"on-chain behavior<br/>repayments, defaults"| AI
+    AI -->|"inference result<br/>score 300–850"| ORC
+    ORC -->|"updateCreditScore()"| CF
+    
+    CF -->|"store credit history"| HIST
+    AI -->|"audit trail"| ARCH
+    
+    CF -->|"interest payments"| PAY
+    PAY -->|"protocol revenue"| POOL
+
+    classDef chain fill:#111927,stroke:#00C2FF,color:#E8F2FF
+    classDef compute fill:#111927,stroke:#00E5A0,color:#E8F2FF
+    classDef storage fill:#111927,stroke:#FFB340,color:#E8F2FF
+    classDef pay fill:#111927,stroke:#0066FF,color:#E8F2FF
+    classDef user fill:#0D1420,stroke:#2A3D57,color:#C8D8EC
+
+    class CF,POOL,EV chain
+    class AI,ORC compute
+    class HIST,ARCH storage
+    class PAY pay
+    class W user

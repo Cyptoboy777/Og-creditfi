@@ -1,0 +1,24 @@
+{
+  "name": "0g-creditfi",
+  "version": "1.0.0",
+  "description": "AI-Powered On-Chain Credit Protocol for AI Agents on 0G Chain — 0G Bridge Buildathon Wave 1",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test contracts/CreditFi.test.js",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network 0g-testnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network 0g-mainnet",
+    "score": "python scripts/credit_scorer.py",
+    "serve": "npx serve frontend"
+  },
+  "keywords": ["0g", "defi", "ai-agents", "credit", "blockchain", "buildathon"],
+  "author": "Cryptoboy_777",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.22.0",
+    "chai": "^4.3.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0"
+  }
+}
