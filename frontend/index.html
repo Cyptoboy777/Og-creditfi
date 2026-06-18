@@ -241,9 +241,9 @@ body::before{
 /* ════ SCORE SECTION ════ */
 .score-section{display:grid;grid-template-columns:320px 1fr;gap:16px}
 .score-card{
-  background:var(--card-bg);backdrop-filter:blur(20px);
-  border:1px solid rgba(0,212,255,.1);border-radius:18px;padding:24px;
-  position:relative;overflow:hidden;
+  background:var(--card-bg);backdrop-filter:blur(40px) saturate(200%);
+  border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:24px;
+  position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.15);
 }
 .score-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
@@ -291,10 +291,11 @@ body::before{
 
 .stats-col{display:grid;grid-template-rows:repeat(3,1fr);gap:12px}
 .stat-mini{
-  background:var(--card-bg);backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.05);border-radius:14px;
+  background:var(--card-bg);backdrop-filter:blur(40px) saturate(200%);
+  border:1px solid rgba(255,255,255,.1);border-radius:18px;
   padding:18px 20px;display:flex;flex-direction:column;gap:6px;
   transition:all .25s cubic-bezier(.2,.7,.3,1);cursor:default;position:relative;overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,.15);
 }
 .stat-mini:hover{border-color:rgba(0,212,255,.15);transform:translateX(4px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
 .stat-mini::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--grad);opacity:0;transition:opacity .3s}
@@ -305,8 +306,9 @@ body::before{
 
 /* ════ PANELS ════ */
 .panel{
-  background:var(--card-bg);backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.05);border-radius:18px;overflow:hidden;
+  background:var(--card-bg);backdrop-filter:blur(40px) saturate(200%);
+  border:1px solid rgba(255,255,255,.1);border-radius:24px;overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,.15);
 }
 .panel-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02)}
 .tab-btn{
@@ -420,13 +422,13 @@ body::before{
 .tx-link:hover{opacity:1}
 
 /* ════ MODALS ════ */
-.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(2,5,9,.94);backdrop-filter:blur(28px);display:none;align-items:center;justify-content:center}
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(2,5,9,.5);backdrop-filter:blur(30px) saturate(200%);display:none;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
 .modal-box{
-  background:var(--s1);border:1px solid rgba(0,212,255,.12);
-  border-radius:20px;padding:28px;width:500px;
-  box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(0,212,255,.05);
-  animation:fadeUp .35s cubic-bezier(.2,.7,.3,1);
+  background:var(--card-bg);border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;padding:28px;width:500px;
+  box-shadow:0 40px 80px rgba(0,0,0,.4);
+  animation:fadeUp .35s cubic-bezier(.2,.7,.3,1);backdrop-filter:blur(40px) saturate(200%);
 }
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .modal-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:.14em;text-transform:uppercase}
@@ -566,39 +568,38 @@ body::before{
       <div class="logo-svg-wrap">
         <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#38BDF8"><animate attributeName="stop-color" values="#38BDF8;#6366F1;#A855F7;#38BDF8" dur="4s" repeatCount="indefinite"/></stop>
-              <stop offset="100%" stop-color="#6366F1"><animate attributeName="stop-color" values="#6366F1;#A855F7;#38BDF8;#6366F1" dur="4s" repeatCount="indefinite"/></stop>
+            <linearGradient id="aiCore" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00D4FF"><animate attributeName="stop-color" values="#00D4FF;#9B35FF;#00F0A0;#00D4FF" dur="6s" repeatCount="indefinite"/></stop>
+              <stop offset="100%" stop-color="#9B35FF"><animate attributeName="stop-color" values="#9B35FF;#00F0A0;#00D4FF;#9B35FF" dur="6s" repeatCount="indefinite"/></stop>
             </linearGradient>
-            <filter id="logoGlow">
-              <feGaussianBlur stdDeviation="1.5" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1" />
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur2" />
+              <feMerge><feMergeNode in="blur2"/><feMergeNode in="blur1"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
           </defs>
-          <!-- Outer rotating ring -->
-          <g style="transform-origin:21px 21px;animation:logoRotate 8s linear infinite" class="logo-ring-outer">
-            <circle cx="21" cy="21" r="19" fill="none" stroke="url(#logoGrad)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7"/>
-            <!-- Orbiting dot 1 -->
-            <circle cx="21" cy="2" r="2.2" fill="#38BDF8" opacity="0.9"><animate attributeName="fill" values="#38BDF8;#6366F1;#A855F7;#38BDF8" dur="4s" repeatCount="indefinite"/></circle>
+          <!-- Orbital 1 -->
+          <g style="transform-origin:21px 21px;animation:logoRotate 6s linear infinite">
+            <ellipse cx="21" cy="21" rx="18" ry="6" fill="none" stroke="url(#aiCore)" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="39" cy="21" r="2" fill="#00D4FF"><animate attributeName="fill" values="#00D4FF;#9B35FF;#00F0A0;#00D4FF" dur="3s" repeatCount="indefinite"/></circle>
           </g>
-          <!-- Inner counter-rotating ring -->
-          <g style="transform-origin:21px 21px;animation:logoRotateRev 5s linear infinite" class="logo-ring-inner">
-            <circle cx="21" cy="21" r="13" fill="none" stroke="url(#logoGrad)" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
-            <!-- Orbiting dot 2 -->
-            <circle cx="21" cy="8" r="1.5" fill="#A855F7" opacity="0.85"><animate attributeName="fill" values="#A855F7;#38BDF8;#6366F1;#A855F7" dur="4s" repeatCount="indefinite"/></circle>
+          <!-- Orbital 2 -->
+          <g style="transform-origin:21px 21px;animation:logoRotateRev 8s linear infinite" transform="rotate(60 21 21)">
+            <ellipse cx="21" cy="21" rx="18" ry="6" fill="none" stroke="url(#aiCore)" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="3" cy="21" r="2" fill="#9B35FF"><animate attributeName="fill" values="#9B35FF;#00F0A0;#00D4FF;#9B35FF" dur="3s" repeatCount="indefinite"/></circle>
           </g>
-          <!-- Center hexagon background -->
-          <polygon points="21,7 33,14 33,28 21,35 9,28 9,14" fill="url(#logoGrad)" opacity="0.15"/>
-          <polygon points="21,9 31,15 31,27 21,33 11,27 11,15" fill="url(#logoGrad)" opacity="0.12"/>
-          <!-- Center icon -->
-          <g filter="url(#logoGlow)">
-            <text x="21" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="13" fill="url(#logoGrad)">CF</text>
+          <!-- Orbital 3 -->
+          <g style="transform-origin:21px 21px;animation:logoRotate 10s linear infinite" transform="rotate(120 21 21)">
+            <ellipse cx="21" cy="21" rx="18" ry="6" fill="none" stroke="url(#aiCore)" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="39" cy="21" r="2" fill="#00F0A0"><animate attributeName="fill" values="#00F0A0;#00D4FF;#9B35FF;#00F0A0" dur="3s" repeatCount="indefinite"/></circle>
           </g>
-          <!-- Glow circle -->
-          <circle cx="21" cy="21" r="8" fill="url(#logoGrad)" opacity="0.08">
-            <animate attributeName="opacity" values="0.05;0.15;0.05" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite"/>
+          <!-- Core Node -->
+          <circle cx="21" cy="21" r="5" fill="url(#aiCore)" filter="url(#coreGlow)">
+            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
           </circle>
+          <!-- Inner Node -->
+          <circle cx="21" cy="21" r="2" fill="#FFFFFF" />
         </svg>
       </div>
       <div>
@@ -951,7 +952,6 @@ const SEL = {
 
 // ════ STATE ════
 const S={account:'',connected:false,registered:false,score:500,deposited:0n,borrowed:0n,borrowTime:null,totalRepaid:0n,defaults:0n,history:[]};
-const DEMO={score:500,deposited:0,borrowed:0,borrowTime:null};
 const AI={provider:'gemini',geminiKey:'',claudeKey:''};
 
 // ════ UTILS ════
@@ -961,7 +961,6 @@ const delay=ms=>new Promise(r=>setTimeout(r,ms));
 function encodeAddress(addr){return '000000000000000000000000'+addr.slice(2).toLowerCase()}
 function encodeUint256(val){return val.toString(16).padStart(64,'0')}
 function hexToUint(hex){return hex?BigInt('0x'+hex.replace(/^0x/,'')):0n}
-function isDemo(){return !CONTRACT_ADDRESS||!S.connected}
 
 // ════ ETH CALLS ════
 async function ethCall(sel,data=''){
@@ -1026,7 +1025,7 @@ async function connectWallet(){
       lk.textContent=CONTRACT_ADDRESS.slice(0,10)+'…'+CONTRACT_ADDRESS.slice(-6);
       lk.href=EXPLORER+'/address/'+CONTRACT_ADDRESS;
     }
-    if(!S.registered&&!isDemo()){document.getElementById('register-cta').style.display='block'}
+    if(!S.registered){document.getElementById('register-cta').style.display='block'}
     refreshUI();toast('Wallet connected · '+S.account.slice(0,8)+'…','success');
     window.ethereum.on('accountsChanged',a=>{S.account=a[0]||'';if(!S.account){S.connected=false;btn.textContent='Connect Wallet';btn.classList.remove('on')}else{btn.textContent=S.account.slice(0,6)+'…'+S.account.slice(-4);loadChainState()}});
   }catch(e){btn.textContent='Connect Wallet';toast('Connection rejected','error')}
@@ -1043,10 +1042,10 @@ function openNetworkModal(){document.getElementById('networkModal').classList.ad
 
 // ════ UI REFRESH ════
 function refreshUI(){
-  const score=isDemo()?DEMO.score:S.score;
-  const deposited=isDemo()?DEMO.deposited:Number(S.deposited)/1e18;
-  const borrowed=isDemo()?DEMO.borrowed:Number(S.borrowed)/1e18;
-  const registered=isDemo()?DEMO.score>0:S.registered;
+  const score=S.score;
+  const deposited=Number(S.deposited)/1e18;
+  const borrowed=Number(S.borrowed)/1e18;
+  const registered=S.registered;
   updateGauge(score);
   document.getElementById('dep-mini').textContent=deposited.toFixed(3);
   document.getElementById('bor-mini').textContent=borrowed.toFixed(3);
@@ -1060,7 +1059,7 @@ function refreshUI(){
   const util=limit>0?borrowed/limit*100:0;
   document.getElementById('bor-fill').style.width=Math.min(util,100)+'%';
   document.getElementById('bor-util').textContent=util.toFixed(1)+'% utilized';
-  const interest=isDemo()?calcDemoInterest():0;
+  const interest=0; // For real calculation, interest is handled on-chain and fetched via totalOwed
   const owed=borrowed+interest;
   document.getElementById('owed-val').textContent=owed.toFixed(6)+' OG';
   document.getElementById('owed-break').textContent=borrowed>0?`Principal ${borrowed.toFixed(4)} + Interest ${interest.toFixed(6)} OG`:'No active borrow';
@@ -1120,11 +1119,7 @@ function gbmScore(rep,bor,def,days,col,age){
 }
 
 // ════ INTEREST ════
-function calcDemoInterest(){
-  if(!DEMO.borrowTime||DEMO.borrowed<=0)return 0;
-  const elapsed=(Date.now()-DEMO.borrowTime)/1000;
-  return DEMO.borrowed*(0.05/31536000)*elapsed;
-}
+// Interest calculation is handled on-chain via smart contracts
 
 // ════ CONFETTI ════
 function confetti(cx,cy){
@@ -1218,7 +1213,6 @@ async function callAI(prompt,maxTokens=600){
 // ════ ACTIONS ════
 async function doRegister(){
   const btn=document.getElementById('register-btn');btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;
-  if(isDemo()){await delay(900);DEMO.score=500;updateGauge(500);refreshUI();addHistory('Register','—','+500','Confirmed','');toast('Registered in demo mode · Score: 500','success');btn.disabled=false;btn.innerHTML='↗ Register on 0G Chain';return}
   try{const hash=await ethSend(SEL.register);toast('Registering…','info');await waitTx(hash);await loadChainState();refreshUI();addHistory('Register','—','+500','Confirmed',hash);confetti(window.innerWidth/2,300);toast('Agent registered on 0G Chain!','success')}
   catch(e){toast(e.message||'Registration failed','error')}
   btn.disabled=false;btn.innerHTML='↗ Register on 0G Chain';
@@ -1227,7 +1221,6 @@ async function doDeposit(){
   const btn=document.getElementById('deposit-btn');const amt=parseFloat(document.getElementById('in-deposit').value)||0;
   if(amt<=0){toast('Enter a valid amount','error');return}
   btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;
-  if(isDemo()){await delay(800);DEMO.deposited+=amt;refreshUI();addHistory('Deposit',`${amt.toFixed(3)} OG`,'+2','Confirmed','');toast(`Deposited ${amt.toFixed(3)} OG (demo)`,'success');btn.disabled=false;btn.innerHTML='↓ Deposit Collateral';document.getElementById('in-deposit').value='';return}
   try{const wei=ether(amt);const hash=await ethSend(SEL.deposit,'',wei);toast('Deposit sent…','info');await waitTx(hash);await loadChainState();refreshUI();addHistory('Deposit',`${amt.toFixed(3)} OG`,'+2','Confirmed',hash);toast(`Deposited ${amt.toFixed(3)} OG on 0G Chain`,'success')}
   catch(e){toast(e.message||'Deposit failed','error')}
   btn.disabled=false;btn.innerHTML='↓ Deposit Collateral';document.getElementById('in-deposit').value='';
@@ -1236,7 +1229,6 @@ async function doWithdraw(){
   const btn=document.getElementById('withdraw-btn');const amt=parseFloat(document.getElementById('in-withdraw').value)||0;
   if(amt<=0){toast('Enter a valid amount','error');return}
   btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;
-  if(isDemo()){await delay(700);DEMO.deposited=Math.max(0,DEMO.deposited-amt);refreshUI();addHistory('Withdraw',`${amt.toFixed(3)} OG`,'0','Confirmed','');toast(`Withdrew ${amt.toFixed(3)} OG (demo)`,'success');btn.disabled=false;btn.innerHTML='↑ Withdraw Collateral';document.getElementById('in-withdraw').value='';return}
   try{const wei=ether(amt);const hash=await ethSend(SEL.withdraw,encodeUint256(wei));toast('Withdraw sent…','info');await waitTx(hash);await loadChainState();refreshUI();addHistory('Withdraw',`${amt.toFixed(3)} OG`,'0','Confirmed',hash);toast(`Withdrew ${amt.toFixed(3)} OG`,'success')}
   catch(e){toast(e.message||'Withdraw failed','error')}
   btn.disabled=false;btn.innerHTML='↑ Withdraw Collateral';document.getElementById('in-withdraw').value='';
@@ -1245,18 +1237,12 @@ async function doBorrow(){
   const btn=document.getElementById('borrow-btn');const amt=parseFloat(document.getElementById('in-borrow').value)||0;
   if(amt<=0){toast('Enter a valid amount','error');return}
   btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;
-  if(isDemo()){
-    const ltv=getLTV(DEMO.score);const limit=DEMO.deposited*ltv/100;
-    if(amt>limit){toast(`Exceeds credit limit (${limit.toFixed(3)} OG)`,'error');btn.innerHTML='⟶ Borrow OG';btn.disabled=false;return}
-    await delay(900);DEMO.borrowed=amt;DEMO.borrowTime=Date.now();refreshUI();addHistory('Borrow',`${amt.toFixed(3)} OG`,'-8','Active','');startInterestTicker();toast(`Borrowed ${amt.toFixed(3)} OG (demo) · 5% APR`,'success');btn.disabled=false;btn.innerHTML='⟶ Borrow OG';document.getElementById('in-borrow').value='';return;
-  }
   try{const wei=ether(amt);const hash=await ethSend(SEL.borrow,encodeUint256(wei));toast('Borrow tx sent…','info');await waitTx(hash);await loadChainState();refreshUI();addHistory('Borrow',`${amt.toFixed(3)} OG`,'-8','Active',hash);document.getElementById('in-borrow').value='';toast(`Borrowed ${amt.toFixed(3)} OG on 0G Chain · 5% APR`,'success');startInterestTicker()}
   catch(e){toast(e.message||'Borrow failed','error')}
   btn.innerHTML='⟶ Borrow OG';btn.disabled=false;
 }
 async function doRepay(){
   const btn=document.getElementById('repay-btn');btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;
-  if(isDemo()){const interest=calcDemoInterest();const total=DEMO.borrowed+interest;await delay(1100);DEMO.borrowed=0;DEMO.borrowTime=null;DEMO.score=Math.min(850,DEMO.score+20);updateGauge(DEMO.score);refreshUI();addHistory('Repay',`${total.toFixed(6)} OG`,'+20','Confirmed','');confetti(window.innerWidth/2,280);toast(`Repaid ${total.toFixed(6)} OG · Score +20 (demo)`,'success');stopInterestTicker();btn.disabled=false;btn.innerHTML='✓ Repay & Boost Score';return}
   try{const owedHex=await ethCall(SEL.totalOwed,encodeAddress(S.account));const owed=hexToUint(owedHex);const hash=await ethSend(SEL.repay,'',owed);toast('Repay tx sent…','info');await waitTx(hash);const prevScore=S.score;await loadChainState();refreshUI();addHistory('Repay',`${fmt(owed,6)} OG`,`+${S.score-prevScore}`,'Confirmed',hash);confetti(window.innerWidth/2,280);toast(`Repaid on 0G Chain · Score +20`,'success');stopInterestTicker()}
   catch(e){toast(e.message||'Repay failed','error')}
   btn.disabled=false;btn.innerHTML='✓ Repay & Boost Score';
@@ -1264,7 +1250,7 @@ async function doRepay(){
 
 // ════ INTEREST TICKER ════
 let interestTimer=null;
-function startInterestTicker(){clearInterval(interestTimer);interestTimer=setInterval(()=>{const i=isDemo()?calcDemoInterest():0;document.getElementById('live-interest').textContent=i.toFixed(8)+' OG'},500)}
+function startInterestTicker(){clearInterval(interestTimer);interestTimer=setInterval(()=>{const i=0;document.getElementById('live-interest').textContent=i.toFixed(8)+' OG'},500)}
 function stopInterestTicker(){clearInterval(interestTimer);document.getElementById('live-interest').textContent='0.00000000 OG'}
 
 // ════ HISTORY ════
@@ -1315,7 +1301,7 @@ async function runAI(){
   document.getElementById('risk-grid').innerHTML=[...parsed.strengths.map(s=>`<div class="risk-item" style="border-left-color:#00F0A0"><div class="ri-title" style="color:#00F0A0">✓ ${s.title}</div><div class="ri-desc">${s.desc}</div></div>`),...parsed.risks.map(r=>`<div class="risk-item" style="border-left-color:#FF3060"><div class="ri-title" style="color:#FF3060">⚠ ${r.title}</div><div class="ri-desc">${r.desc}</div></div>`)].join('');
   document.getElementById('ai-explain').innerHTML=`<span class="label">// AI Analysis</span>${parsed.analysis}`;
   btn.disabled=false;
-  if((S.registered||DEMO.score)&&score){if(isDemo())DEMO.score=score;else S.score=score;updateGauge(score);refreshUI()}
+  if(S.registered&&score){S.score=score;updateGauge(score);refreshUI()}
 }
 function resetScorer(){document.getElementById('s-rep').value=8;document.getElementById('s-bor').value=10;document.getElementById('s-def').value=2;document.getElementById('s-days').value=6;document.getElementById('s-col').value=2.1;document.getElementById('s-age').value=75;document.getElementById('ai-result').classList.remove('visible')}
 
@@ -1384,7 +1370,7 @@ function toggleTheme(){
 })();
 
 // ════ INIT ════
-setInterval(()=>{if(S.borrowed>0n||DEMO.borrowed>0)refreshUI()},3000);
+setInterval(()=>{if(S.borrowed>0n)refreshUI()},3000);
 setInterval(()=>{if(S.connected&&CONTRACT_ADDRESS)loadChainState()},15000);
 </script>
 </body>
