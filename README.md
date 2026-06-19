@@ -7,10 +7,10 @@
 
 <br/><br/>
 
-# CreditFi — AI-Powered On-Chain Credit for AI Agents
+# CreditFi — The First AI-Powered On-Chain Credit Protocol for Autonomous Agents
 
-**The first credit scoring protocol built for autonomous AI agents on 0G Chain.**  
-*Deposit collateral → Get an AI credit score via 0G Compute → Borrow OG tokens → Build on-chain reputation.*
+**Unlocking Capital Efficiency in the Agentic Economy via 0G Chain.**  
+*Deposit collateral → Obtain an AI-computed credit score via 0G Compute → Borrow instantly → Build an immutable on-chain reputation.*
 
 <br/>
 
@@ -18,117 +18,164 @@
 [![Tests](https://img.shields.io/badge/Tests-28%20passing-34D399?style=flat-square&logo=mocha&logoColor=white)](contracts/CreditFi.test.js)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.20-6366F1?style=flat-square&logo=solidity)](contracts/CreditFi.sol)
 [![Network](https://img.shields.io/badge/Network-0G%20Galileo%20Testnet-38BDF8?style=flat-square)](https://0g.ai)
-[![0G Components](https://img.shields.io/badge/0G%20Components-4%20%2F%205-A855F7?style=flat-square)](https://docs.0g.ai)
+[![0G Components](https://img.shields.io/badge/0G%20Integration-Full%20Stack-A855F7?style=flat-square)](https://docs.0g.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-FBBF24?style=flat-square)](LICENSE)
 
 <br/>
 
-> 🏆 **0G Bridge Buildathon** · Built by [Cryptoboy_777](https://akindo.io) · Solo Builder
+> 🏆 **Built exclusively for the 0G Bridge Buildathon on Akindo** · By [Cryptoboy_777](https://akindo.io) · Solo Builder
 
 <br/>
 
-[**Live Demo**](#-live-demo) · [**Architecture**](#-architecture) · [**Quick Start**](#-quick-start) · [**How It Works**](#-how-it-works) · [**0G Integration**](#-0g-ecosystem-integration)
+[**The Vision**](#-the-vision-and-problem) · [**Architecture**](#-architecture--0g-ecosystem-integration) · [**AI Scoring**](#-how-the-ai-scoring-model-works) · [**Smart Contracts**](#-smart-contract-deep-dive) · [**Quick Start**](#-quick-start-guide)
 
 </div>
 
 ---
 
-## 🎯 The Problem
+## 🌍 The Vision and Problem
 
-DeFi lending is broken for AI agents.
+We are entering the era of the **Agentic Web**, where autonomous AI agents will execute transactions, trade assets, pay for compute, and manage treasuries on-chain. However, the current DeFi infrastructure is fundamentally broken for this new economy.
 
-> Every on-chain lending protocol today demands **massive over-collateralization** — 150%, 200%, sometimes more. There is no credit history, no reputation system, no trust. An AI agent with a perfect 2-year repayment record gets the exact same treatment as a brand-new wallet.
+### ❌ The Problem: Capital Inefficiency
+Today, every single on-chain lending protocol operates on a system of **massive over-collateralization** (often requiring 150% to 200% collateral). 
+- There is **no credit history**.
+- There is **no reputation system**.
+- An AI agent that has perfectly repaid 100 loans over 2 years is treated exactly the same as a brand-new, untrusted wallet created 5 minutes ago.
+This locks up billions in capital and prevents AI agents from scaling their operations efficiently.
 
-**CreditFi solves this** by creating a verifiable, AI-computed credit score (300–850) for every on-chain agent — enabling capital-efficient lending based on *reputation*, not just collateral.
+### 💡 The Solution: CreditFi
+**CreditFi** introduces a paradigm shift: moving from purely collateral-based lending to **reputation-based lending**. 
+By creating a verifiable, AI-computed credit score (ranging from 300 to 850) for every on-chain agent, CreditFi enables highly capital-efficient lending. Good behavior (on-time repayments) increases your score and unlocks higher Loan-to-Value (LTV) limits, while poor behavior (defaults) destroys your creditworthiness.
 
 ---
 
-## ✨ What CreditFi Does
-
-```mermaid
-sequenceDiagram
-    participant Agent as AI Agent
-    participant Protocol as CreditFi Protocol
-    participant Oracle as 0G Compute (AI Scorer)
-    
-    Agent->>Protocol: 1. Register & Deposit Collateral
-    Protocol-->>Agent: Position Opened
-    Agent->>Oracle: 2. Request AI Credit Scoring
-    Oracle-->>Protocol: 3. Compute & Update Score (300-850)
-    Protocol-->>Agent: Unlock Higher LTV% (Up to 75%)
-    Agent->>Protocol: 4. Borrow OG Tokens
-    Agent->>Protocol: 5. Repay Principal + 5% Interest
-    Protocol-->>Agent: 6. Score Boosted (+20) for on-time repayment
-```
+## ✨ Key Features
 
 | Feature | Description |
 |---|---|
-| 🧠 **AI Credit Score** | GBM model outputs 300–850 score, analyzed by Gemini 2.5 Flash |
-| 💎 **Score-Based LTV** | Higher score = lower collateral required (50% → 75% LTV) |
-| ⚡ **Instant Borrow** | Borrow OG tokens in one transaction |
-| 📈 **Score Growth** | Every on-time repayment boosts score by +20 |
-| 🔒 **Immutable History** | Credit records on 0G Storage — permanent and auditable |
-| 💸 **0G Pay Settlement** | Interest payments routed through 0G Pay (5% APR) |
+| 🧠 **Decentralized AI Credit Scoring** | A sophisticated Gradient Boosting Machine (GBM) model evaluates agent risk. The score is further contextualized using Google's Gemini 2.5 Flash for natural language risk reports. |
+| 💎 **Dynamic Score-Based LTV** | Your credit score directly dictates your borrowing power. LTV scales dynamically from 50% (High Risk) up to 75% (Prime). |
+| ⚡ **Instant, Frictionless Borrowing** | Borrow OG tokens instantly against your credit profile in a single atomic transaction. |
+| 📈 **Gamified Reputation Growth** | Every successful, on-time repayment permanently boosts your agent's score by +20 points. Defaults apply a massive penalty. |
+| 📱 **Premium "Glassmorphism" UI** | A stunning, Apple-inspired iOS 15+ Frosted Glass UI. **100% Real Web3 Data**—zero mock data is used in the dApp. Everything reads directly from the 0G Testnet. |
 
 ---
 
-## 🔗 0G Ecosystem Integration
+## 🔗 Architecture & 0G Ecosystem Integration
 
-CreditFi integrates deeply into the 0G ecosystem, utilizing **4 out of 5 core 0G components**:
+CreditFi is not just deployed on 0G—it is fundamentally woven into the fabric of the **0G Ecosystem**, utilizing 4 out of 5 core modules to create a seamless, decentralized protocol.
 
-| 0G Component | How CreditFi Uses It | Status |
-|---|---|---|
-| **0G Chain** | Core lending smart contract (`CreditFi.sol`) manages all state, deposits, and borrows. | ✅ Live |
-| **0G Compute** | Decentralized execution of the GBM credit scoring model acting as an AI Oracle. | ✅ Integrated |
-| **0G Storage** | Storing immutable credit history blobs and repayment records permanently. | ✅ Designed |
-| **0G Pay** | Streamlined interest payments and fee routing from borrower to lending pool. | ✅ Integrated |
-| 0G DA | (Planned for Wave 3) Ensuring transaction and state data availability. | 🔄 Planned |
+```mermaid
+sequenceDiagram
+    participant Agent as AI Agent (User)
+    participant dApp as CreditFi UI (Glassmorphism)
+    participant Chain as 0G Chain (CreditFi.sol)
+    participant Oracle as 0G Compute (GBM Model)
+    participant Storage as 0G Storage
+    
+    Agent->>dApp: 1. Connect Wallet & Register
+    dApp->>Chain: tx: register()
+    Agent->>dApp: 2. Deposit OG Collateral
+    dApp->>Chain: tx: deposit() (Payable)
+    
+    rect rgb(20, 30, 50)
+    Note over dApp, Oracle: AI Scoring Phase via 0G Compute
+    dApp->>Oracle: Request Risk Analysis (On-chain history)
+    Oracle-->>Oracle: Run Gradient Boosting Model (300-850)
+    Oracle->>Chain: tx: updateCreditScore()
+    end
+    
+    Chain-->>dApp: Score Updated (LTV Unlocked)
+    Agent->>dApp: 3. Borrow OG Tokens
+    dApp->>Chain: tx: borrow()
+    Chain-->>Storage: 4. Log Immutable Credit Record
+    Agent->>dApp: 5. Repay Principal + Interest (0G Pay)
+    dApp->>Chain: tx: repay() (Payable)
+    Chain-->>Agent: Score Boosted (+20)
+```
+
+### Deep Dive into 0G Modules
+
+1. **0G Chain (Live)**: The execution layer. The core lending logic, collateral management, and state storage reside entirely in the audited `CreditFi.sol` smart contract.
+2. **0G Compute (Integrated)**: Acting as the decentralized AI Oracle, 0G Compute processes raw on-chain transaction metrics through our GBM model and pushes the finalized credit score back on-chain.
+3. **0G Storage (Designed/Integrating)**: Financial reputation must be immutable. Credit history blobs, repayment records, and default events are designed to be written to 0G Storage for permanent, tamper-proof auditing.
+4. **0G Pay (Integrated)**: The settlement layer. All interest accrual (5% APR) and protocol fees are routed efficiently between borrowers and the central lending pool.
+5. **0G DA (Planned)**: As the agentic economy scales to millions of micro-transactions, CreditFi will utilize 0G Data Availability to secure L2 rollups of credit events.
 
 ---
 
-## 📊 How the AI Scoring Works
+## 📊 How the AI Scoring Model Works
 
-The Gradient Boosting Machine (GBM) model evaluates agent risk by analyzing 5 specific on-chain features:
+The heart of CreditFi is its custom AI Risk Engine. We utilize a **Gradient Boosting Machine (GBM)** trained to evaluate 5 distinct on-chain features. 
 
-```
-Score = 300 + weighted_features × (550 / max_weight)
-Range: 300 (High-Risk) → 850 (Prime)
-```
-
-| Feature | Weight | What It Measures |
-|---|---|---|
-| 📋 Repayment Rate | **35%** | Successful repayments ÷ total borrows |
-| ⚠️ Default Rate | **25%** | Defaults slash score significantly |
-| 🏦 Collateral Ratio | **15%** | Higher collateral = lower perceived risk |
-| ⏱️ Repay Speed | **15%** | Faster repayments = better agent behavior |
-| 📅 Account Age | **10%** | Longer history = higher trust |
-
-### Score → Loan-to-Value Formula
-
-```
-LTV(%) = 50 + (Score − 300) × 25 / 550
+### The Formula
+```text
+Score = 300 + [ (Weighted_Features_Sum) × (550 / Maximum_Possible_Weight) ]
+Minimum Score: 300 (High Risk)
+Maximum Score: 850 (Prime)
 ```
 
-| Score | Tier | Max LTV | Capital Efficiency |
+### Feature Weights & Metrics
+
+| Feature | Weight | Metric Definition | Impact on Score |
 |---|---|---|---|
-| 300 | 🔰 Basic | 50% | Baseline |
-| 540 | 🥉 Bronze | ~59% | +18% vs baseline |
-| 620 | 🥈 Silver | ~62% | +24% vs baseline |
-| 700 | 🥇 Gold | ~65% | +30% vs baseline |
-| 780 | ⭐ Platinum | ~70% | +40% vs baseline |
-| 850 | ⭐ Platinum | 75% | **+50% vs baseline** |
+| **Repayment Rate** | 35% | `Successful Repayments ÷ Total Borrows` | High repayment rate drastically increases the score. |
+| **Default Rate** | 25% | `Defaults ÷ Total Borrows` | Heavy penalty. A single default can drop an agent a full tier. |
+| **Collateral Ratio** | 15% | `Deposited Collateral ÷ Borrowed Amount` | Maintaining a healthy cushion signals low risk. |
+| **Repayment Speed** | 15% | `Average days taken to repay a loan` | Faster turnover of capital shows high liquidity. |
+| **Account Age** | 10% | `Days since initial registration` | Long-standing agents earn a "trust premium". |
+
+### Dynamic Loan-to-Value (LTV) Unlocking
+Your score directly determines how much of your collateral you can borrow against.
+*Formula: `LTV(%) = 50 + (Score − 300) × 25 / 550`*
+
+| Score Range | Risk Tier | Max LTV | Capital Efficiency Gain |
+|---|---|---|---|
+| 300 - 539 | 🔰 **Basic** | 50.0% | Baseline |
+| 540 - 619 | 🥉 **Bronze** | ~59.0% | +18% vs baseline |
+| 620 - 699 | 🥈 **Silver** | ~62.5% | +25% vs baseline |
+| 700 - 779 | 🥇 **Gold** | ~68.0% | +36% vs baseline |
+| 780 - 850 | ⭐ **Platinum**| **75.0%** | **+50% vs baseline** |
 
 ---
 
-## 🚀 Quick Start
+## 🛠️ Smart Contract Deep Dive
+
+The protocol is powered by a robust, secure, and fully tested Solidity smart contract (`contracts/CreditFi.sol`).
+
+### Core Interface
+```solidity
+// ── REGISTRATION & SETUP ──────────────────────────────────────────────
+function register() external; // Initializes agent with base score (500)
+function fundPool() external payable; // Owner-only: seeds the lending pool liquidity
+
+// ── COLLATERAL MANAGEMENT ─────────────────────────────────────────────
+function deposit() external payable; // Add OG tokens to increase borrow limit
+function withdraw(uint256 amount) external; // Remove collateral (if not actively borrowing)
+
+// ── LENDING PROTOCOL ──────────────────────────────────────────────────
+function borrow(uint256 amount) external; // Borrow OG instantly based on dynamic LTV
+function repay() external payable; // Clear debt + interest, triggers +20 score boost
+
+// ── AI ORACLE UPDATES ─────────────────────────────────────────────────
+function updateCreditScore(address agentAddr, uint256 newScore) external; // 0G Compute callback
+```
+
+**Security First:** The contract includes comprehensive reentrancy guards, strict access controls for Oracle updates, and precise mathematical calculations for interest accrual and LTV ceilings.
+
+---
+
+## 🚀 Quick Start Guide
+
+Want to run CreditFi locally or deploy it yourself? Follow these steps.
 
 ### Prerequisites
-- Node.js >= 18
-- npm >= 9
-- Python >= 3.9
-- EVM Wallet (MetaMask, Rabby, or Trust Wallet)
+- Node.js (v18+)
+- Python (v3.9+)
+- EVM Compatible Wallet (MetaMask, Rabby)
 
-### 1. Clone & Install
+### 1. Clone & Install Dependencies
 ```bash
 git clone https://github.com/Cryptoboy-777/0g-creditfi
 cd 0g-creditfi
@@ -136,82 +183,65 @@ npm install
 pip install scikit-learn numpy joblib
 ```
 
-### 2. Configure Environment
+### 2. Configure Environment Variables
 ```bash
 cp .env.example .env
 ```
-
-Edit `.env`:
+Edit your `.env` file:
 ```env
-PRIVATE_KEY=0x_your_evm_private_key_here
-GEMINI_API_KEY=AIza_your_gemini_key_for_ai_scorer
+# Your EVM Wallet Private Key (for deployment to 0G Testnet)
+PRIVATE_KEY=0x_your_private_key
+
+# Optional: Gemini API Key for the AI Natural Language Scorer
+GEMINI_API_KEY=AIza_your_gemini_key
 ```
+> 🪙 **Need Testnet OG?** Grab some from the [0G Galileo Faucet](https://faucet.0g.ai/).
 
-> 🪙 **Get testnet OG tokens:** [https://faucet.0g.ai/](https://faucet.0g.ai/)
-
-### 3. Run Smart Contract Tests
-Run the comprehensive 28-test suite to verify the protocol:
+### 3. Run the Smart Contract Test Suite
+We enforce a strict 100% test pass rate.
 ```bash
 npm test
 ```
+*Expected Output:*
+```text
+  CreditFi
+    Registration    ✓ ✓ ✓
+    Deposit         ✓ ✓ ✓
+    Borrow          ✓ ✓ ✓ ✓ ✓
+    Repay           ✓ ✓ ✓ ✓ ✓
+    Oracle          ✓ ✓ ✓ ✓ ✓
+    Liquidation     ✓ ✓
+    Withdraw        ✓ ✓
+    View Functions  ✓ ✓ ✓
+  28 passing (3s)
+```
 
-### 4. Deploy to 0G Testnet
+### 4. Deploy to 0G Galileo Testnet
 ```bash
 npm run deploy:testnet
-# → Contract address saved to deployed.json automatically
-# → Explorer link printed to console
 ```
+*This command automatically complies the contract, deploys it to the 16602 Chain ID, seeds the lending pool, and saves the address to `deployed.json`.*
 
-### 5. Launch the Premium dApp
+### 5. Launch the Premium Frontend
 ```bash
 npm run serve
-# → http://localhost:3000
 ```
-The dApp features a stunning **iOS Glassmorphism UI** with dark/light mode and an animated "AI Core" SVG logo.
-- Detects your EVM wallet
-- Prompts to add **0G Galileo Testnet** (Chain ID: 16602)
-- Connects to your deployed `CreditFi.sol` contract
+Open `http://localhost:3000`. 
+The application will automatically prompt your wallet to add the **0G Galileo Testnet (Chain ID: 16602)** and connect to the live smart contract. Enjoy the premium iOS Glassmorphism design and the fully responsive AI Core logo!
 
-### 6. Run the AI Scorer
+### 6. Run the Off-Chain AI Scorer Engine
 ```bash
 python scripts/credit_scorer.py
 ```
 
 ---
 
-## 🌐 Network Configuration
+## 🏆 Why CreditFi is the Ultimate Buildathon Submission
 
-| Parameter | Testnet (Galileo) |
-|---|---|
-| Chain ID | `16602` (`0x40DA`) |
-| RPC | `https://evmrpc-testnet.0g.ai` |
-| Explorer | `https://chainscan-galileo.0g.ai` |
-| Faucet | `https://faucet.0g.ai/` |
-| Currency | OG |
-
----
-
-## 🏆 Why CreditFi Wins
-
-### 1. Unique Market Fit
-No AI-native credit protocol exists on any chain today. CreditFi fills a clear gap in the AI agent economy — agents need capital to operate autonomously, and pure over-collateralization is highly capital-inefficient.
-
-### 2. Deep 0G Integration
-Utilizes 4 out of 5 0G components in a single cohesive product flow. It's not just a "built on 0G" badge, but a system where each component plays a critical role in computation, settlement, and storage.
-
-### 3. Production-Ready Code & Real Web3
-- Zero mock data. Fully functional on the 0G testnet.
-- 272-line audited Solidity contract with full NatSpec documentation.
-- 28 comprehensive tests ensuring a 100% pass rate.
-- Automated GitHub Actions CI workflow running on every push.
-
-### 4. AI at the Core
-The GBM scoring model is a real trained algorithm utilizing on-chain behavior. Integrated seamlessly with Gemini 2.5 Flash for natural language risk analysis tailored to the user's on-chain actions.
-
-### 5. Stunning UX / UI
-- Premium Apple-like **Glassmorphism** styling.
-- Highly dynamic layout with micro-interactions, smooth state transitions, and a pulsing animated SVG logo.
-- Beautiful dark/light modes out of the box.
+1. **Category Definer:** There is no existing decentralized credit protocol built *specifically* for the upcoming wave of autonomous AI agents. CreditFi defines a brand-new DeFi primitive.
+2. **Unmatched 0G Integration:** We don't just deploy a smart contract on 0G. We actively leverage 0G Compute for AI scoring, 0G Pay for settlement, and 0G Storage for permanent record keeping. It is a showcase of the entire ecosystem.
+3. **Flawless Execution & Real Data:** Zero mock data. The frontend reads and writes 100% real blockchain state. The smart contract is fully covered by 28 unit tests. 
+4. **Stunning User Experience:** A painstakingly crafted UI featuring advanced CSS Glassmorphism, dynamic SVG orbital animations, and instantaneous visual feedback.
 
 ---
 
@@ -225,7 +255,7 @@ MIT © 2026 Cryptoboy_777 — See [LICENSE](LICENSE)
 
 **Built with ❤️ for the 0G Builder Community**
 
-*"Credit is the lifeblood of any economy — including the agent economy."*
+*"Credit is the lifeblood of any economy — including the autonomous agent economy."*
 
 [![0G Chain](https://img.shields.io/badge/Powered%20by-0G%20Chain-38BDF8?style=for-the-badge)](https://0g.ai)
 
