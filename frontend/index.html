@@ -202,7 +202,9 @@ body::before{
 .sidebar-link svg{width:12px;height:12px;flex-shrink:0}
 
 /* ════ MAIN ════ */
-.main{overflow-y:auto;padding:24px 28px 80px;display:flex;flex-direction:column;gap:16px}
+.main{overflow-y:auto;padding:24px 28px 80px;display:flex;flex-direction:column;gap:16px;position:relative}
+.bg-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:540px;height:540px;opacity:0.04;pointer-events:none;z-index:0;animation:pulseWatermark 8s ease-in-out infinite}
+@keyframes pulseWatermark{0%,100%{opacity:0.04;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.08;transform:translate(-50%,-50%) scale(1.05)}}
 
 /* ════ PANEL + MODAL LIGHT MODE ════ */
 [data-theme="light"] .panel{box-shadow:0 4px 24px rgba(30,54,104,.08)}
@@ -657,6 +659,34 @@ body::before{
 
   <!-- MAIN -->
   <main class="main">
+
+    <!-- BACKGROUND ANIMATED LOGO WATERMARK -->
+    <div class="bg-watermark">
+      <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="aiCoreBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00D4FF"><animate attributeName="stop-color" values="#00D4FF;#9B35FF;#00F0A0;#00D4FF" dur="8s" repeatCount="indefinite"/></stop>
+            <stop offset="100%" stop-color="#9B35FF"><animate attributeName="stop-color" values="#9B35FF;#00F0A0;#00D4FF;#9B35FF" dur="8s" repeatCount="indefinite"/></stop>
+          </linearGradient>
+        </defs>
+        <g style="transform-origin:21px 21px;animation:logoRotate 20s linear infinite">
+          <ellipse cx="21" cy="21" rx="18" ry="6" fill="none" stroke="url(#aiCoreBg)" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="39" cy="21" r="1.5" fill="#00D4FF"><animate attributeName="fill" values="#00D4FF;#9B35FF;#00F0A0;#00D4FF" dur="4s" repeatCount="indefinite"/></circle>
+        </g>
+        <g style="transform-origin:21px 21px;animation:logoRotateRev 25s linear infinite" transform="rotate(60 21 21)">
+          <ellipse cx="21" cy="21" rx="18" ry="6" fill="none" stroke="url(#aiCoreBg)" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="3" cy="21" r="1.5" fill="#9B35FF"><animate attributeName="fill" values="#9B35FF;#00F0A0;#00D4FF;#9B35FF" dur="4s" repeatCount="indefinite"/></circle>
+        </g>
+        <g style="transform-origin:21px 21px;animation:logoRotate 30s linear infinite" transform="rotate(120 21 21)">
+          <ellipse cx="21" cy="21" rx="18" ry="6" fill="none" stroke="url(#aiCoreBg)" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="39" cy="21" r="1.5" fill="#00F0A0"><animate attributeName="fill" values="#00F0A0;#00D4FF;#9B35FF;#00F0A0" dur="4s" repeatCount="indefinite"/></circle>
+        </g>
+        <circle cx="21" cy="21" r="4" fill="url(#aiCoreBg)">
+          <animate attributeName="r" values="3;5;3" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    </div>
 
     <!-- DASHBOARD -->
     <div id="tab-dashboard" class="tab-view">
